@@ -13,7 +13,7 @@ This project involves:
 2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
 3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
 
-🎯 This repository demostrates expertise in:
+🎯 This repository demonstrates expertise in:
 - SQL Development
 - Data Architecture
 - SQL Data Engineering  
@@ -28,7 +28,7 @@ This project involves:
 
 ## 🛠️ Project Tools:
 
-Everything is Free!
+Every Tool Used in the Project (Free!)
 
 - **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
 - **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
@@ -98,3 +98,7 @@ data-warehouse-project/
 ## 🛡️ License
 
 This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
+
+## 🌟 About Me
+
+This is Kenneth Appiah a SQL Developer specializing in database design, query optimization, and ETL solutions to drive secure, data-driven decisions
