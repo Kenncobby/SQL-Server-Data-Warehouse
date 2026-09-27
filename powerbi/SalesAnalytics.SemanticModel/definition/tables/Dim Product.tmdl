@@ -1,24 +1,29 @@
+/// Current products only (gold.dim_products keeps rows where prd_end_dt is null), one row per product.
 table 'Dim Product'
 	lineageTag: c6dacd88-19c9-491f-a17a-66f7e3393b32
 
+	/// Surrogate key joining to Fact Sales[Product Key]. Hidden: use Product Name / the Product hierarchy instead.
 	column 'Product Key'
 		dataType: int64
 		formatString: 0
 		lineageTag: 4076625b-d1c7-4686-a4ac-0b63096a0d1e
+		isHidden
 		summarizeBy: none
 		sourceColumn: Product Key
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Source system product ID from CRM prd_info.
 	column 'Product ID'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 317e0318-594d-4710-bade-bb92e68b484e
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Product ID
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Business/natural key from CRM prd_info (prd_key).
 	column 'Product Number'
 		dataType: string
 		lineageTag: 86135714-c5ee-4be5-98b6-e20a92e6570a
@@ -27,6 +32,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Product display name.
 	column 'Product Name'
 		dataType: string
 		lineageTag: 38813286-ea98-4e15-aa08-640387bee912
@@ -35,6 +41,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// ERP category code, e.g. "AC_BR".
 	column 'Category ID'
 		dataType: string
 		lineageTag: 2c919ce8-e101-4289-9ff9-ec7dab1c0c1f
@@ -43,6 +50,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Top-level product category, e.g. Bikes, Accessories, Clothing.
 	column Category
 		dataType: string
 		lineageTag: 0bf78145-da91-4fdc-880e-fd799a4986ed
@@ -51,6 +59,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Product subcategory within Category.
 	column Subcategory
 		dataType: string
 		lineageTag: 905acf11-c635-45c3-8f59-33122b3a224d
@@ -59,6 +68,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Whether the product requires maintenance ("Yes"/"No"), from ERP PX_CAT_G1V2.
 	column Maintenance
 		dataType: string
 		lineageTag: 59e34e5d-0f77-43ed-b6d1-ab0472e5e167
@@ -67,9 +77,10 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Unit cost, used to calculate Total Cost and Gross Profit.
 	column Cost
 		dataType: decimal
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,##0.00
 		lineageTag: 9e188f30-24d1-4dca-9f59-584ffde64115
 		summarizeBy: sum
 		sourceColumn: Cost
@@ -78,6 +89,7 @@ table 'Dim Product'
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Product line grouping from CRM prd_info (e.g. Mountain, Road, Touring).
 	column 'Product Line'
 		dataType: string
 		lineageTag: b6cde4a3-8930-44f9-ba6f-d600e78fcd84
@@ -86,6 +98,7 @@ table 'Dim Product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Date the current product version became effective.
 	column 'Start Date'
 		dataType: dateTime
 		formatString: Long Date
@@ -96,6 +109,22 @@ table 'Dim Product'
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+	/// Product drill path: Category -> Subcategory -> Product Name.
+	hierarchy Product
+		lineageTag: 4f3b1324-ff81-4c34-93da-f1f8e0995bb5
+
+		level Category
+			lineageTag: aa43237a-5ebf-4b56-8807-d5bd122def73
+			column: Category
+
+		level Subcategory
+			lineageTag: d9f88ad6-03db-45f4-a15d-63bad5ec4e9a
+			column: Subcategory
+
+		level 'Product Name'
+			lineageTag: 7710deaf-ab1c-4e63-a061-8182c65e46f9
+			column: 'Product Name'
 
 	partition 'Dim Product' = m
 		mode: import

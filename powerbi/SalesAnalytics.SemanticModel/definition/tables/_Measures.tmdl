@@ -1,10 +1,13 @@
+/// Empty placeholder table holding every DAX measure in the model, organized into display folders.
 table _Measures
 	lineageTag: c826084c-cf59-4741-93fd-a8f3817dfbe0
 
+	/// Unused placeholder column, hidden from the Fields pane.
 	column Column1
 		dataType: int64
 		formatString: 0
 		lineageTag: b4f37fbd-c52d-4260-aefd-ec0e63fef5cd
+		isHidden
 		summarizeBy: sum
 		sourceColumn: Column1
 

@@ -1,6 +1,8 @@
+/// One row per sales order line, joined to Gold dimensions on business keys.
 table 'Fact Sales'
 	lineageTag: 5d6ffec1-ebf0-43bd-8e95-d2aee008c958
 
+	/// Sales order number (not a surrogate key; used for Order Count / DISTINCTCOUNT).
 	column 'Order Number'
 		dataType: string
 		lineageTag: ececcc94-65b3-49f1-a91f-aeff02c2cf15
@@ -9,28 +11,34 @@ table 'Fact Sales'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Foreign key to Dim Product. Hidden: use Product Name / the Product hierarchy instead.
 	column 'Product Key'
 		dataType: int64
 		formatString: 0
 		lineageTag: 3ab333ff-d375-4555-8884-849719948542
+		isHidden
 		summarizeBy: none
 		sourceColumn: Product Key
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Foreign key to Dim Customer. Hidden: use Customer Name / the Geography hierarchy instead.
 	column 'Customer Key'
 		dataType: int64
 		formatString: 0
 		lineageTag: 1f39103a-9f88-49cc-8729-48bb5a2bca60
+		isHidden
 		summarizeBy: none
 		sourceColumn: Customer Key
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Order date. Hidden: drives the active relationship to Dim Date; use Dim Date columns/slicers for filtering.
 	column 'Order Date'
 		dataType: dateTime
 		formatString: Long Date
 		lineageTag: ae104717-2379-4ed0-b244-38dcd1566f81
+		isHidden
 		summarizeBy: none
 		sourceColumn: Order Date
 
@@ -38,10 +46,12 @@ table 'Fact Sales'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Shipping date. Hidden: drives an inactive relationship to Dim Date, activated via USERELATIONSHIP in the Sales by Ship Date measure.
 	column 'Shipping Date'
 		dataType: dateTime
 		formatString: Long Date
 		lineageTag: 3c9586c3-ecc6-4f73-9c02-b1579f46f6c2
+		isHidden
 		summarizeBy: none
 		sourceColumn: Shipping Date
 
@@ -49,10 +59,12 @@ table 'Fact Sales'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Due date. Hidden: drives an inactive relationship to Dim Date, available via USERELATIONSHIP.
 	column 'Due Date'
 		dataType: dateTime
 		formatString: Long Date
 		lineageTag: 0079cc24-b77a-4a6e-b5c6-e0d624966579
+		isHidden
 		summarizeBy: none
 		sourceColumn: Due Date
 
@@ -60,10 +72,12 @@ table 'Fact Sales'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Line-level sales amount. Hidden: use the Total Sales measure instead of summing this column directly.
 	column 'Sales Amount'
 		dataType: decimal
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,##0
 		lineageTag: be452001-8440-4375-a2ee-18c0f527de92
+		isHidden
 		summarizeBy: sum
 		sourceColumn: Sales Amount
 
@@ -71,19 +85,23 @@ table 'Fact Sales'
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Quantity of units sold on this line. Hidden: use the Total Quantity measure instead of summing this column directly.
 	column Quantity
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 201e9efa-1cc9-427f-a458-ab14f8bbbd31
+		isHidden
 		summarizeBy: sum
 		sourceColumn: Quantity
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Unit price on this line. Hidden: use the Avg Selling Price measure instead of summing this column directly.
 	column Price
 		dataType: decimal
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,##0.00
 		lineageTag: f4842818-34a7-4f03-b1be-ffa421baa8d7
+		isHidden
 		summarizeBy: sum
 		sourceColumn: Price
 
@@ -91,11 +109,12 @@ table 'Fact Sales'
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	/// Days between Order Date and Shipping Date, computed in Power Query.
 	column 'Days to Ship'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 48584f41-0d5d-4082-830a-365232494cbe
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Days to Ship
 
 		annotation SummarizationSetBy = Automatic

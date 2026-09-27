@@ -6,3 +6,17 @@ relationship AutoDetected_829fa2f8-a1a5-4950-a451-be82872728e7
 	fromColumn: 'Fact Sales'.'Product Key'
 	toColumn: 'Dim Product'.'Product Key'
 
+relationship FactSales_OrderDate_DimDate
+	fromColumn: 'Fact Sales'.'Order Date'
+	toColumn: 'Dim Date'.Date
+
+relationship FactSales_ShippingDate_DimDate
+	isActive: false
+	fromColumn: 'Fact Sales'.'Shipping Date'
+	toColumn: 'Dim Date'.Date
+
+relationship FactSales_DueDate_DimDate
+	isActive: false
+	fromColumn: 'Fact Sales'.'Due Date'
+	toColumn: 'Dim Date'.Date
+

@@ -1,8 +1,12 @@
+/// Marked date table: one row per calendar day from 2010-01-01 to 2014-12-31, with calendar and fiscal (July-start) attributes.
 table 'Dim Date'
 	lineageTag: ef389f36-7393-496f-a76e-bd0e59602a1b
+	dataCategory: Time
 
+	/// The calendar date. Marked as the table's key column for time intelligence.
 	column Date
 		dataType: dateTime
+		isKey
 		formatString: Long Date
 		lineageTag: dd197f9a-f7a7-44a9-bd35-6090325a67d7
 		summarizeBy: none
@@ -12,83 +16,97 @@ table 'Dim Date'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Calendar year, e.g. 2013.
 	column Year
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: d7088b27-ab05-4ed4-ad8b-7c01aa54966a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar quarter number (1-4), used to sort the Quarter column.
 	column 'Quarter No'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 57109d7b-e511-49cd-9de4-7233145e71d4
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Quarter No
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar quarter label, e.g. "Q3". Sorted by Quarter No.
 	column Quarter
 		dataType: string
 		lineageTag: 835cc572-f732-44a3-ac4c-e5901a765619
 		summarizeBy: none
 		sourceColumn: Quarter
+		sortByColumn: 'Quarter No'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar month number (1-12), used to sort Month Name.
 	column 'Month No'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: b45d780b-2447-4100-bb09-07ef89af9a58
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Month No
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Abbreviated month name, e.g. "Jan". Sorted by Month No.
 	column 'Month Name'
 		dataType: string
 		lineageTag: 8d6b83ee-cb15-4281-bc62-6ce5cf8c4e49
 		summarizeBy: none
 		sourceColumn: Month Name
+		sortByColumn: 'Month No'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Year and month label, e.g. "2013-07". Sorted by Year Month Key.
 	column Year-Month
 		dataType: string
 		lineageTag: c1e63962-df6d-4771-ba63-81113ba5130e
 		summarizeBy: none
 		sourceColumn: Year-Month
+		sortByColumn: 'Year Month Key'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Numeric YYYYMM sort key behind Year-Month, e.g. 201307.
 	column 'Year Month Key'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 654a22fd-8db3-410c-b6d3-2e365a79b834
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: Year Month Key
 
 		annotation SummarizationSetBy = Automatic
 
+	/// ISO day-of-week number, Monday = 1 through Sunday = 7. Used to sort Day Name.
 	column 'Day of Week No (Mon=1)'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: e8e23285-c4bd-4782-abef-ca5ca6c32404
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Day of Week No (Mon=1)
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Abbreviated weekday name, e.g. "Mon". Sorted by Day of Week No.
 	column 'Day Name'
 		dataType: string
 		lineageTag: 6c0da15b-bdea-4225-811d-6715f74290c0
 		summarizeBy: none
 		sourceColumn: Day Name
+		sortByColumn: 'Day of Week No (Mon=1)'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// True for Saturday and Sunday.
 	column 'Is Weekend'
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -98,24 +116,27 @@ table 'Dim Date'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// ISO-8601 week-of-year number (nearest-Thursday method).
 	column 'Week of Year (ISO)'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: a9f66701-7e8e-4c14-af9b-659a9c6ce6ec
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Week of Year (ISO)
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal year number, named by its end year (fiscal year starts in the month given by the FiscalYearStartMonth parameter).
 	column 'Fiscal Year No'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: fef952fa-e5d3-46a6-9a1f-ef061ba57477
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Fiscal Year No
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal year label, e.g. "FY2013".
 	column 'Fiscal Year'
 		dataType: string
 		lineageTag: f3b18360-8a03-45bb-8d29-1dd1145d30ad
@@ -124,48 +145,96 @@ table 'Dim Date'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal month number, 1 = first month of the fiscal year.
 	column 'Fiscal Month No'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 2bc55b69-0651-421d-ad41-fd48be33afdc
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Fiscal Month No
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal quarter number (1-4) within the fiscal year.
 	column 'Fiscal Quarter No'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 49c32861-5ae2-476d-a092-46b2f671c60b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Fiscal Quarter No
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal quarter label, e.g. "FQ1". Sorted by Fiscal Quarter No.
 	column 'Fiscal Quarter'
 		dataType: string
 		lineageTag: 335bfa18-fd1d-4e79-8e68-46407a341dac
 		summarizeBy: none
 		sourceColumn: Fiscal Quarter
+		sortByColumn: 'Fiscal Quarter No'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Fiscal year and month label, e.g. "FY2013-01". Sorted by Fiscal Year Month Key.
 	column 'Fiscal Year-Month'
 		dataType: string
 		lineageTag: e03d471f-1c9a-464e-a0a7-dda3c766d18d
 		summarizeBy: none
 		sourceColumn: Fiscal Year-Month
+		sortByColumn: 'Fiscal Year Month Key'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Numeric sort key behind Fiscal Year-Month. Hidden: pure sort helper, not a reporting attribute.
 	column 'Fiscal Year Month Key'
 		dataType: int64
-		formatString: 0
+		formatString: #,##0
 		lineageTag: 34357b8e-19aa-488e-ae4d-cf929d69e5fa
-		summarizeBy: count
+		isHidden
+		summarizeBy: none
 		sourceColumn: Fiscal Year Month Key
 
 		annotation SummarizationSetBy = Automatic
+
+	/// Calendar drill path: Year -> Quarter -> Month Name -> Date.
+	hierarchy Calendar
+		lineageTag: 8352ead0-4caf-4ba8-bf86-0567ca4a1dc2
+
+		level Year
+			lineageTag: ef0d22f1-ed30-40ee-b7a4-d786caef328d
+			column: Year
+
+		level Quarter
+			lineageTag: 9c88635d-4283-427b-9cf6-52e315eeb3bb
+			column: Quarter
+
+		level 'Month Name'
+			lineageTag: 8238f84d-8b0c-4e7d-b141-21bec9725716
+			column: 'Month Name'
+
+		level Date
+			lineageTag: 361568ba-c67f-4225-a685-1d6a99f7ed76
+			column: Date
+
+	/// Fiscal drill path: Fiscal Year -> Fiscal Quarter -> Fiscal Year-Month -> Date.
+	hierarchy Fiscal
+		lineageTag: 381c45a2-20c9-40b6-8f4d-b9efeea491ef
+
+		level 'Fiscal Year'
+			lineageTag: 0d1f4c08-79ae-4a6a-acad-2fef3823edae
+			column: 'Fiscal Year'
+
+		level 'Fiscal Quarter'
+			lineageTag: 715a803d-0e9b-414b-9c90-cdc62010eeff
+			column: 'Fiscal Quarter'
+
+		level 'Fiscal Year-Month'
+			lineageTag: 6b43416a-dc3c-412e-a6ab-f1ef68af53ca
+			column: 'Fiscal Year-Month'
+
+		level Date
+			lineageTag: 1bc8779a-4ef8-482f-87e0-9baced73d4dc
+			column: Date
 
 	partition 'Dim Date' = m
 		mode: import
