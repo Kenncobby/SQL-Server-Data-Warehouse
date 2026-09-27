@@ -23,3 +23,7 @@ Thumbs.db
 *.csv
 *.png
 *.pdf
+
+# Power BI Project local files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

@@ -1,0 +1,25 @@
+table _Measures
+	lineageTag: c826084c-cf59-4741-93fd-a8f3817dfbe0
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: b4f37fbd-c52d-4260-aefd-ec0e63fef5cd
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [Column1 = Int64.Type], {})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

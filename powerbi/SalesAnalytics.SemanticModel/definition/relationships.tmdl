@@ -1,0 +1,8 @@
+relationship AutoDetected_20783a4d-2ad1-4f80-9ca9-34fc79792842
+	fromColumn: 'Fact Sales'.'Customer Key'
+	toColumn: 'Dim Customer'.'Customer Key'
+
+relationship AutoDetected_829fa2f8-a1a5-4950-a451-be82872728e7
+	fromColumn: 'Fact Sales'.'Product Key'
+	toColumn: 'Dim Product'.'Product Key'
+
