@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "e1634c1e52339dd411d2",
-  "position": { "x": 196, "y": 220, "z": 1000, "height": 464, "width": 700, "tabOrder": 1003 },
+  "position": {
+    "x": 196,
+    "y": 220,
+    "z": 1000,
+    "height": 464,
+    "width": 700,
+    "tabOrder": 1003
+  },
   "visual": {
     "visualType": "columnChart",
     "query": {
@@ -9,21 +16,49 @@
         "Category": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Date" } }, "Property": "Year-Month" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Date"
+                    }
+                  },
+                  "Property": "Year-Month"
+                }
+              },
               "queryRef": "Dim Date.Year-Month",
-              "nativeQueryRef": "Year-Month"
+              "nativeQueryRef": "Year-Month",
+              "active": true
             }
           ]
         },
         "Y": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
               "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales"
             },
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Sales by Ship Date" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales by Ship Date"
+                }
+              },
               "queryRef": "_Measures.Sales by Ship Date",
               "nativeQueryRef": "Sales by Ship Date"
             }
@@ -33,15 +68,65 @@
     },
     "objects": {
       "dataPoint": [
-        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } } }, "selector": { "metadata": "_Measures.Total Sales" } },
-        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#C9A227'" } } } } } }, "selector": { "metadata": "_Measures.Sales by Ship Date" } }
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A9D8F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Total Sales"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#C9A227'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sales by Ship Date"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Sales by Order Date vs Ship Date'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales by Order Date vs Ship Date'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
