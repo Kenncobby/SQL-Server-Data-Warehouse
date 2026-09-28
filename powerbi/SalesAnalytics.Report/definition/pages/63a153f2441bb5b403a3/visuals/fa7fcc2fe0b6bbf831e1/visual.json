@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "fa7fcc2fe0b6bbf831e1",
   "position": {
-    "x": 994,
-    "y": 104,
+    "x": 1014.4680851063831,
+    "y": 53.495440729483285,
     "z": 13000,
     "height": 100,
     "width": 250,
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "26ebbfe15c5b11cde82b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Sales per Customer"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

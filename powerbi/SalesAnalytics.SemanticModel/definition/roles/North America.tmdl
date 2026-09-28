@@ -1,0 +1,8 @@
+/// Restricts Dim Customer rows (and everything that joins through it) to US and Canada.
+role 'North America'
+	modelPermission: read
+
+	tablePermission 'Dim Customer' = 'Dim Customer'[Country] IN { "United States", "Canada" }
+
+	annotation PBI_Id = 98159fac1deb46ad92fe0c257862855c
+

@@ -40,5 +40,9 @@ ref table 'Time Intelligence'
 ref table 'Top N'
 ref table 'Metric Selector'
 
+ref role 'North America'
+ref role Europe
+ref role Pacific
+
 ref cultureInfo en-US
 

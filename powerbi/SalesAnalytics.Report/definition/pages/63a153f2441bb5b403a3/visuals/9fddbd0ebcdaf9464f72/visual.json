@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "9fddbd0ebcdaf9464f72",
   "position": {
-    "x": 912,
-    "y": 220,
+    "x": 912.34042553191489,
+    "y": 161.45896656534956,
     "z": 7000,
-    "height": 280,
-    "width": 352,
+    "height": 338.48024316109422,
+    "width": 352.09726443769,
     "tabOrder": 13000
   },
   "visual": {
@@ -93,5 +93,37 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a3764637948e032a2742",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Customer"
+              }
+            },
+            "Property": "Gender"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "97ea4c30cd4b709145b9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

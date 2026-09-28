@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "0792e1ba1d617a85b644",
   "position": {
-    "x": 912.07948899929022,
-    "y": 313.41376863023419,
+    "x": 912.34042553191489,
+    "y": 172.15805471124619,
     "z": 13000,
-    "height": 370.64584811923351,
-    "width": 351.56848828956703,
+    "height": 511.61094224924017,
+    "width": 351.12462006079028,
     "tabOrder": 13000
   },
   "visual": {
@@ -115,5 +115,79 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ac9eb26971a984d82c0b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Date"
+              }
+            },
+            "Property": "Year-Month"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "89ccfc60c630b20e4900",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Order Count"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "64b68bc5dbb156d1a879",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "337b79d1cbd5e18d628c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Gross Profit"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bb751ce6aaa024e9821e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Quantity"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

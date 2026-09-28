@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "94a11cc2382934fb83a7",
   "position": {
-    "x": 462,
-    "y": 104,
+    "x": 444.01215805471116,
+    "y": 55.440729483282681,
     "z": 8000,
-    "height": 100,
-    "width": 250,
+    "height": 100.18237082066869,
+    "width": 219.81762917933131,
     "tabOrder": 9000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "162fe13793c5b4b3e252",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "On-Time Ship %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

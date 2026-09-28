@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f00d77ddf0f94fd2fbd7",
   "position": {
-    "x": 740,
-    "y": 410,
+    "x": 739.209726443769,
+    "y": 282.06686930091189,
     "z": 12000,
-    "height": 280,
-    "width": 524,
+    "height": 422.12765957446811,
+    "width": 524.25531914893622,
     "tabOrder": 12000
   },
   "visual": {
@@ -112,5 +112,51 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8a8ac31384d75589c6d6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Product"
+              }
+            },
+            "Property": "Subcategory"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1cbfca8a069de30450b3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Quantity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fb633ffb756750e7a867",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Gross Margin %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

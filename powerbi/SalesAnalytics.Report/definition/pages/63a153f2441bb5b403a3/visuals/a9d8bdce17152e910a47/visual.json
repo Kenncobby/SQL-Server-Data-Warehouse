@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a9d8bdce17152e910a47",
   "position": {
-    "x": 712,
-    "y": 516,
+    "x": 711.97568389057756,
+    "y": 509.66565349544078,
     "z": 9000,
-    "height": 180,
-    "width": 552,
+    "height": 194.52887537993922,
+    "width": 552.46200607902733,
     "tabOrder": 15000
   },
   "visual": {
@@ -119,5 +119,65 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "53fc63027aa03033badd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Customer"
+              }
+            },
+            "Property": "Customer Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "67f1896b61e5e69e2039",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Customer"
+              }
+            },
+            "Property": "Country"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "49d06867720402d47a6e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Order Count"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f96c20175a5c398e3952",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

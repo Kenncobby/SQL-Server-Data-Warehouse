@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "3f6e5b825673ef50112d",
   "position": {
-    "x": 196,
-    "y": 220,
+    "x": 196.47416413373861,
+    "y": 161.45896656534956,
     "z": 1000,
-    "height": 280,
-    "width": 700,
+    "height": 338.48024316109422,
+    "width": 700.30395136778122,
     "tabOrder": 12000
   },
   "visual": {
@@ -128,5 +128,51 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0d84392c421919798a9e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Date"
+              }
+            },
+            "Property": "Year-Month"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "96362d24b24c11c89e82",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "New Customers"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b01769618b13c7ced4ae",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Returning Customers"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

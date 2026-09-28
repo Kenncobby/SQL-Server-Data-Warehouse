@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "324d07969780780db284",
   "position": {
-    "x": 196,
-    "y": 410,
+    "x": 195.50151975683892,
+    "y": 282.06686930091189,
     "z": 3000,
-    "height": 280,
-    "width": 524,
+    "height": 422.12765957446811,
+    "width": 533.98176291793311,
     "tabOrder": 11000
   },
   "visual": {
@@ -130,5 +130,51 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6bd1d356051eca57058c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Product"
+              }
+            },
+            "Property": "Product Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "476d457c70c0bb012b05",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3a9075529099e183b703",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Pareto Cumulative %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

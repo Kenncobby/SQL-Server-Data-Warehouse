@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "4ffc45e1d874dea51e7d",
   "position": {
-    "x": 196,
-    "y": 16,
+    "x": 195.96059113300493,
+    "y": 15.960591133004927,
     "z": 7000,
-    "height": 40,
-    "width": 500,
+    "height": 29.261083743842367,
+    "width": 500.09852216748772,
     "tabOrder": 0
   },
   "visual": {
@@ -23,11 +23,11 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI Semibold",
                       "fontSize": "20px",
-                      "color": "#1F3A5F"
+                      "textDecoration": "underline",
+                      "color": "#1f3a5f"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

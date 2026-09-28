@@ -1,0 +1,8 @@
+/// Restricts Dim Customer rows (and everything that joins through it) to Australia.
+role Pacific
+	modelPermission: read
+
+	tablePermission 'Dim Customer' = 'Dim Customer'[Country] = "Australia"
+
+	annotation PBI_Id = 858f010f53ee4b5190ec28f8bf4de52d
+

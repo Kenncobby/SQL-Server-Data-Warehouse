@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "6cd1c742e10eee9517df",
   "position": {
-    "x": 16,
-    "y": 76,
+    "x": 18.480243161094226,
+    "y": 64.194528875379945,
     "z": 1000,
-    "height": 90,
-    "width": 228,
+    "height": 102.12765957446808,
+    "width": 227.59878419452889,
     "tabOrder": 2000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2b9fd4011dc978ba3b4c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

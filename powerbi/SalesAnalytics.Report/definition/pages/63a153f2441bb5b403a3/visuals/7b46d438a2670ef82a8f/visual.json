@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "7b46d438a2670ef82a8f",
   "position": {
-    "x": 196,
-    "y": 104,
+    "x": 196.47416413373861,
+    "y": 53.495440729483285,
     "z": 5000,
     "height": 100,
     "width": 250,
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e2ab12da50638a58b0d9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Active Customers"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

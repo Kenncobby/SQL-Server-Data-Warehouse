@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "891022751b045cb622ac",
   "position": {
-    "x": 196,
-    "y": 104,
+    "x": 196.47416413373861,
+    "y": 55.440729483282681,
     "z": 7000,
-    "height": 100,
-    "width": 250,
+    "height": 100.18237082066869,
+    "width": 208.14589665653497,
     "tabOrder": 8000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e8e9c428437d70a9b3b8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Avg Days to Ship"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

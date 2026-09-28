@@ -23,11 +23,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI Semibold",
                       "fontSize": "20px",
-                      "color": "#1F3A5F"
+                      "color": "#1f3a5f"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

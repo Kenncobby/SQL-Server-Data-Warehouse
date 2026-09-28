@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a01cfbee21762307bdb6",
   "position": {
-    "x": 1008,
-    "y": 76,
+    "x": 1007.6595744680851,
+    "y": 64.194528875379945,
     "z": 3000,
-    "height": 90,
-    "width": 228,
+    "height": 102.12765957446808,
+    "width": 228.57142857142858,
     "tabOrder": 6000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e53af18033273008e0b1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Quantity"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

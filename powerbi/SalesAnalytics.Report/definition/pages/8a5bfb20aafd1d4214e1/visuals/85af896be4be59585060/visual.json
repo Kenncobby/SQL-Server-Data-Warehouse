@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "85af896be4be59585060",
   "position": {
-    "x": 760,
-    "y": 76,
+    "x": 757.68996960486322,
+    "y": 64.194528875379945,
     "z": 2000,
-    "height": 90,
-    "width": 228,
+    "height": 102.12765957446808,
+    "width": 227.59878419452889,
     "tabOrder": 5000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b77467c2b7cb52e85aea",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Product Rank"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

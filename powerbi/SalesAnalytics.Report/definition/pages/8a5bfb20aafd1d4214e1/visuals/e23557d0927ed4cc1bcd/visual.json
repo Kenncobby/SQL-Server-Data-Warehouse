@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "e23557d0927ed4cc1bcd",
   "position": {
-    "x": 264,
-    "y": 76,
+    "x": 263.58662613981767,
+    "y": 64.194528875379945,
     "z": 7000,
-    "height": 90,
-    "width": 228,
+    "height": 102.12765957446808,
+    "width": 227.59878419452889,
     "tabOrder": 3000
   },
   "visual": {
@@ -121,5 +121,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5c5cc7e9cb099850762d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Gross Profit"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
