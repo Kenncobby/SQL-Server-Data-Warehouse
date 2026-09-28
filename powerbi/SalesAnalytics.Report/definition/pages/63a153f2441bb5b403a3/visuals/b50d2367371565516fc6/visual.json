@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b50d2367371565516fc6",
+  "position": { "x": 196, "y": 516, "z": 1000, "height": 180, "width": 500, "tabOrder": 1006 },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Age Band" } },
+              "queryRef": "Dim Customer.Age Band",
+              "nativeQueryRef": "Age Band"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "dataPoint": [
+        { "properties": { "defaultColor": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } } } }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Total Sales by Age Band'" } } }
+      } }]
+    }
+  }
+}
