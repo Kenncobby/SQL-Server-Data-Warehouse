@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "2d256fcbe67fa7f02ec1",
-  "position": { "x": 8, "y": 176, "z": 1000, "height": 56, "width": 304, "tabOrder": 1 },
+  "position": {
+    "x": 229.09090909090907,
+    "y": 472.72727272727269,
+    "z": 1000,
+    "height": 115.71428571428571,
+    "width": 223.44827586206895,
+    "tabOrder": 1000
+  },
   "visual": {
     "visualType": "cardVisual",
     "query": {
@@ -9,7 +16,16 @@
         "Data": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Gross Margin %" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gross Margin %"
+                }
+              },
               "queryRef": "_Measures.Gross Margin %",
               "nativeQueryRef": "Gross Margin %"
             }
@@ -18,16 +34,130 @@
       }
     },
     "objects": {
-      "value": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "18D" } } } }, "selector": { "id": "default" } }],
-      "label": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "9D" } } } }, "selector": { "id": "default" } }],
-      "padding": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "4D" } } } }, "selector": { "id": "default" } }],
-      "layout": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "0D" } } } }, "selector": { "id": "default" } }]
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Gross Margin'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Gross Margin'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

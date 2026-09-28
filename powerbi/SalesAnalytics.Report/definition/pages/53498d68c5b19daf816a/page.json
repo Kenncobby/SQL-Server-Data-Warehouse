@@ -3,17 +3,33 @@
   "name": "53498d68c5b19daf816a",
   "displayName": "Category Tip",
   "displayOption": "FitToPage",
-  "type": "Tooltip",
-  "height": 240,
-  "width": 320,
+  "height": 720,
+  "width": 1280,
   "objects": {
     "background": [
       {
         "properties": {
-          "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#FFFFFF'" } } } } },
-          "transparency": { "expr": { "Literal": { "Value": "0D" } } }
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#FFFFFF'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
         }
       }
     ]
-  }
+  },
+  "type": "Tooltip"
 }

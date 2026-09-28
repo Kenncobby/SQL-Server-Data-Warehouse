@@ -5,27 +5,60 @@
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
-  "objects": {
-    "background": [
-      {
-        "properties": {
-          "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#F4F6F8'" } } } } },
-          "transparency": { "expr": { "Literal": { "Value": "0D" } } }
-        }
-      }
-    ]
-  },
   "filterConfig": {
     "filters": [
       {
         "name": "Filter1e7b22136e331e1b3f4c4ef2",
         "field": {
           "Column": {
-            "Expression": { "SourceRef": { "Entity": "Dim Product" } },
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Product"
+              }
+            },
             "Property": "Product Name"
           }
         },
         "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim Product",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Product Name"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Road-150 Red- 56'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
         "howCreated": "Drillthrough"
       }
     ]
@@ -39,8 +72,38 @@
         "boundFilter": "Filter1e7b22136e331e1b3f4c4ef2",
         "fieldExpr": {
           "Column": {
-            "Expression": { "SourceRef": { "Entity": "Dim Product" } },
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Product"
+              }
+            },
             "Property": "Product Name"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F6F8'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
           }
         }
       }

@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a01cfbee21762307bdb6",
-  "position": { "x": 1008, "y": 76, "z": 1000, "height": 90, "width": 228, "tabOrder": 1004 },
+  "position": {
+    "x": 1008,
+    "y": 76,
+    "z": 3000,
+    "height": 90,
+    "width": 228,
+    "tabOrder": 6000
+  },
   "visual": {
     "visualType": "cardVisual",
     "query": {
@@ -9,7 +16,16 @@
         "Data": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Quantity" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Quantity"
+                }
+              },
               "queryRef": "_Measures.Total Quantity",
               "nativeQueryRef": "Total Quantity"
             }
@@ -18,16 +34,92 @@
       }
     },
     "objects": {
-      "value": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "22D" } } } }, "selector": { "id": "default" } }],
-      "label": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "10D" } } } }, "selector": { "id": "default" } }],
-      "padding": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "8D" } } } }, "selector": { "id": "default" } }],
-      "layout": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "0D" } } } }, "selector": { "id": "default" } }]
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "22D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "paddingUniform": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Quantity'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Quantity'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

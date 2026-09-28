@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "b1378a0e3f5f6c322884",
-  "position": { "x": 732, "y": 182, "z": 1000, "height": 500, "width": 532, "tabOrder": 1006 },
+  "position": {
+    "x": 732,
+    "y": 182,
+    "z": 5000,
+    "height": 500,
+    "width": 532,
+    "tabOrder": 8000
+  },
   "visual": {
     "visualType": "tableEx",
     "query": {
@@ -9,17 +16,44 @@
         "Values": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Customer Name" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Customer"
+                    }
+                  },
+                  "Property": "Customer Name"
+                }
+              },
               "queryRef": "Dim Customer.Customer Name",
               "nativeQueryRef": "Customer Name"
             },
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Country" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Customer"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
               "queryRef": "Dim Customer.Country",
               "nativeQueryRef": "Country"
             },
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
               "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales"
             }
@@ -28,18 +62,48 @@
       }
     },
     "objects": {
-      "columnHeaders": [{
-        "properties": {
-          "columnAdjustment": { "expr": { "Literal": { "Value": "'growToFit'" } } },
-          "autoSizeColumnWidth": { "expr": { "Literal": { "Value": "true" } } }
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
-      }]
+      ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Customers Who Bought This Product'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Customers Who Bought This Product'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

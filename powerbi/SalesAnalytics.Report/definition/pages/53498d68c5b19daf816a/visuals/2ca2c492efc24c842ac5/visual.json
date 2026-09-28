@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "2ca2c492efc24c842ac5",
-  "position": { "x": 8, "y": 8, "z": 1000, "height": 160, "width": 304, "tabOrder": 0 },
+  "position": {
+    "x": 229.09090909090907,
+    "y": 99.090909090909079,
+    "z": 0,
+    "height": 332.51231527093597,
+    "width": 821.97044334975362,
+    "tabOrder": 0
+  },
   "visual": {
     "visualType": "lineChart",
     "query": {
@@ -9,16 +16,35 @@
         "Category": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Date" } }, "Property": "Year-Month" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Date"
+                    }
+                  },
+                  "Property": "Year-Month"
+                }
+              },
               "queryRef": "Dim Date.Year-Month",
-              "nativeQueryRef": "Year-Month"
+              "nativeQueryRef": "Year-Month",
+              "active": true
             }
           ]
         },
         "Y": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
               "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales"
             }
@@ -28,17 +54,103 @@
     },
     "objects": {
       "dataPoint": [
-        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } } } }
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A9D8F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ],
-      "categoryAxis": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }],
-      "valueAxis": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }]
+      "categoryAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Sales Trend'" } } },
-        "fontSize": { "expr": { "Literal": { "Value": "10D" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales Trend'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
