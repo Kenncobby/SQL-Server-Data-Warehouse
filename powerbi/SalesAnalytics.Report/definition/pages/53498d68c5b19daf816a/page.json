@@ -2,9 +2,9 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "53498d68c5b19daf816a",
   "displayName": "Category Tip",
-  "displayOption": "FitToPage",
-  "height": 720,
-  "width": 1280,
+  "displayOption": "ActualSize",
+  "height": 300,
+  "width": 400,
   "objects": {
     "background": [
       {
@@ -31,5 +31,6 @@
       }
     ]
   },
+  "visibility": "HiddenInViewMode",
   "type": "Tooltip"
 }

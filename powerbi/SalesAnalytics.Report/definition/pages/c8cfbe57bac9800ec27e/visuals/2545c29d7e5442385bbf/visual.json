@@ -109,6 +109,19 @@
             }
           }
         }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'53498d68c5b19daf816a'"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   }
