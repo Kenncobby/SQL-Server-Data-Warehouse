@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "002023e6b19dd4d0b210",
+  "position": { "x": 1122, "y": 16, "z": 1000, "height": 80, "width": 142, "tabOrder": 8 },
+  "visual": {
+    "visualType": "slicer",
+    "syncGroup": { "groupName": "TopNSync", "fieldChanges": true, "filterChanges": true },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [{
+            "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Top N" } }, "Property": "Top N" } },
+            "queryRef": "Top N.Top N",
+            "nativeQueryRef": "Top N"
+          }]
+        }
+      }
+    },
+    "objects": {
+      "data": [{ "properties": { "mode": { "expr": { "Literal": { "Value": "'Single'" } } } } }],
+      "header": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Top N'" } } }
+      }}]
+    },
+    "visualContainerObjects": {
+      "padding": [{ "properties": {
+        "top":    { "expr": { "Literal": { "Value": "8D" } } },
+        "bottom": { "expr": { "Literal": { "Value": "8D" } } },
+        "left":   { "expr": { "Literal": { "Value": "8D" } } },
+        "right":  { "expr": { "Literal": { "Value": "8D" } } }
+      }}]
+    }
+  }
+}
