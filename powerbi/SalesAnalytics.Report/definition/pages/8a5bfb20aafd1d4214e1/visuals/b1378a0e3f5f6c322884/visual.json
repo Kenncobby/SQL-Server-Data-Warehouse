@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b1378a0e3f5f6c322884",
+  "position": { "x": 732, "y": 182, "z": 1000, "height": 500, "width": 532, "tabOrder": 1006 },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Customer Name" } },
+              "queryRef": "Dim Customer.Customer Name",
+              "nativeQueryRef": "Customer Name"
+            },
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Country" } },
+              "queryRef": "Dim Customer.Country",
+              "nativeQueryRef": "Country"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [{
+        "properties": {
+          "columnAdjustment": { "expr": { "Literal": { "Value": "'growToFit'" } } },
+          "autoSizeColumnWidth": { "expr": { "Literal": { "Value": "true" } } }
+        }
+      }]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Customers Who Bought This Product'" } } }
+      } }]
+    }
+  }
+}

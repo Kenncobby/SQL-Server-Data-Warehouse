@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "85af896be4be59585060",
+  "position": { "x": 760, "y": 76, "z": 1000, "height": 90, "width": 228, "tabOrder": 1003 },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Product Rank" } },
+              "queryRef": "_Measures.Product Rank",
+              "nativeQueryRef": "Product Rank"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "22D" } } } }, "selector": { "id": "default" } }],
+      "label": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "10D" } } } }, "selector": { "id": "default" } }],
+      "padding": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "8D" } } } }, "selector": { "id": "default" } }],
+      "layout": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "0D" } } } }, "selector": { "id": "default" } }]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Rank'" } } }
+      } }]
+    }
+  }
+}

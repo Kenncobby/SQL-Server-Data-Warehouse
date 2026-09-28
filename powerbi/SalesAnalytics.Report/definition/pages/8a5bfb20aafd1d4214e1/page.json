@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "8a5bfb20aafd1d4214e1",
+  "displayName": "Product Detail",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#F4F6F8'" } } } } },
+          "transparency": { "expr": { "Literal": { "Value": "0D" } } }
+        }
+      }
+    ]
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter1e7b22136e331e1b3f4c4ef2",
+        "field": {
+          "Column": {
+            "Expression": { "SourceRef": { "Entity": "Dim Product" } },
+            "Property": "Product Name"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "Pod",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter1e7b22136e331e1b3f4c4ef2",
+        "boundFilter": "Filter1e7b22136e331e1b3f4c4ef2",
+        "fieldExpr": {
+          "Column": {
+            "Expression": { "SourceRef": { "Entity": "Dim Product" } },
+            "Property": "Product Name"
+          }
+        }
+      }
+    ]
+  }
+}
