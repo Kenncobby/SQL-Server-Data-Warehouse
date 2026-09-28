@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "0bcfc54e954783ae12de",
+  "position": { "x": 880, "y": 16, "z": 1000, "height": 80, "width": 160, "tabOrder": 6 },
+  "visual": {
+    "visualType": "slicer",
+    "syncGroup": { "groupName": "YearSync", "fieldChanges": true, "filterChanges": true },
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [{
+            "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Date" } }, "Property": "Year" } },
+            "queryRef": "Dim Date.Year",
+            "nativeQueryRef": "Year"
+          }]
+        }
+      }
+    },
+    "objects": {
+      "data": [{ "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } }],
+      "header": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Year'" } } }
+      }}]
+    },
+    "visualContainerObjects": {
+      "padding": [{ "properties": {
+        "top":    { "expr": { "Literal": { "Value": "8D" } } },
+        "bottom": { "expr": { "Literal": { "Value": "8D" } } },
+        "left":   { "expr": { "Literal": { "Value": "8D" } } },
+        "right":  { "expr": { "Literal": { "Value": "8D" } } }
+      }}]
+    }
+  }
+}

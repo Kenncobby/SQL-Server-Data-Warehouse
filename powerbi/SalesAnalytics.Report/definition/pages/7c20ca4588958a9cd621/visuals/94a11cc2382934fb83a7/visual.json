@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "94a11cc2382934fb83a7",
+  "position": { "x": 462, "y": 104, "z": 1000, "height": 100, "width": 250, "tabOrder": 1001 },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "On-Time Ship %" } },
+              "queryRef": "_Measures.On-Time Ship %",
+              "nativeQueryRef": "On-Time Ship %"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "24D" } } } }, "selector": { "id": "default" } }],
+      "label": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "10D" } } } }, "selector": { "id": "default" } }],
+      "padding": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "8D" } } } }, "selector": { "id": "default" } }],
+      "layout": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "0D" } } } }, "selector": { "id": "default" } }]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'On-Time Ship %'" } } }
+      } }]
+    }
+  }
+}

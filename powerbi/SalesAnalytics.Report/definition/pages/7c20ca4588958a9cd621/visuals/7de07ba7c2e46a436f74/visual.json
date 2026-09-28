@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "7de07ba7c2e46a436f74",
+  "position": { "x": 912, "y": 308, "z": 1000, "height": 376, "width": 352, "tabOrder": 1005 },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Date" } }, "Property": "Year-Month" } },
+              "queryRef": "Dim Date.Year-Month",
+              "nativeQueryRef": "Year-Month"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Gross Profit" } },
+              "queryRef": "_Measures.Gross Profit",
+              "nativeQueryRef": "Gross Profit"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Quantity" } },
+              "queryRef": "_Measures.Total Quantity",
+              "nativeQueryRef": "Total Quantity"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Order Count" } },
+              "queryRef": "_Measures.Order Count",
+              "nativeQueryRef": "Order Count"
+            }
+          ]
+        }
+      }
+    },
+    "fieldParameters": [
+      {
+        "parameterExpr": {
+          "Column": {
+            "Expression": { "SourceRef": { "Entity": "Metric Selector" } },
+            "Property": "Metric Selector"
+          }
+        },
+        "index": 0,
+        "length": 4
+      }
+    ],
+    "objects": {
+      "dataPoint": [
+        { "properties": { "defaultColor": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } } } }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Metric Selector: Sales / Profit / Quantity / Orders'" } } }
+      } }]
+    }
+  }
+}
