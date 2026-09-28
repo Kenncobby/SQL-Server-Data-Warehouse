@@ -1,7 +1,7 @@
 /// Single-row helper table holding the data refresh timestamp, consumed by the Last Refresh measure. Hidden from the Fields pane.
 table 'Refresh Info'
-	lineageTag: 7aa751cf-b975-4526-8dd4-0bb21e65c9f4
 	isHidden
+	lineageTag: 7aa751cf-b975-4526-8dd4-0bb21e65c9f4
 
 	/// Timestamp captured at refresh time via DateTime.LocalNow().
 	column 'Last Refresh'

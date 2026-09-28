@@ -188,9 +188,9 @@ table 'Dim Date'
 	/// Numeric sort key behind Fiscal Year-Month. Hidden: pure sort helper, not a reporting attribute.
 	column 'Fiscal Year Month Key'
 		dataType: int64
+		isHidden
 		formatString: #,##0
 		lineageTag: 34357b8e-19aa-488e-ae4d-cf929d69e5fa
-		isHidden
 		summarizeBy: none
 		sourceColumn: Fiscal Year Month Key
 

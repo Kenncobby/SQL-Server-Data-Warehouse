@@ -1,0 +1,49 @@
+/// Reusable time-intelligence wrapper: apply Current/PY/YoY/YoY%/YTD/FYTD to any base measure via the Period column.
+table 'Time Intelligence'
+	lineageTag: f2d61aa4-7e11-4cdd-988b-e049c06d99c3
+
+	calculationGroup
+		precedence: 10
+
+		calculationItem Current = SELECTEDMEASURE ()
+
+		calculationItem PY = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) )
+
+		calculationItem YoY =
+				VAR _cur = SELECTEDMEASURE ()
+				VAR _py = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) )
+				RETURN IF ( NOT ISBLANK ( _py ), _cur - _py )
+
+		calculationItem 'YoY %' =
+				DIVIDE (
+				    SELECTEDMEASURE () - CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) ),
+				    CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) )
+				)
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem YTD = CALCULATE ( SELECTEDMEASURE (), DATESYTD ( 'Dim Date'[Date] ) )
+
+		calculationItem FYTD = CALCULATE ( SELECTEDMEASURE (), DATESYTD ( 'Dim Date'[Date], "6/30" ) )
+
+	/// Slicer/axis column showing the selected time-calculation name. Sorted by Ordinal.
+	column Period
+		dataType: string
+		lineageTag: 60767d3b-80bd-4dbf-80c9-98a05836e7a5
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Display order of calculation items. Hidden: pure sort helper.
+	column Ordinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8218c1ac-4721-48e1-ba12-0efdf86891aa
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

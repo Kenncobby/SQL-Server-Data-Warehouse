@@ -5,9 +5,9 @@ table 'Dim Customer'
 	/// Surrogate key joining to Fact Sales[Customer Key]. Hidden: use Customer Name / the Geography hierarchy instead.
 	column 'Customer Key'
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 7cf9d7ca-e5af-4100-bfa1-d3f9dda80d9f
-		isHidden
 		summarizeBy: none
 		sourceColumn: Customer Key
 
@@ -53,8 +53,8 @@ table 'Dim Customer'
 	/// Customer country, cleaned in Power Query (n/a -> Unknown, casing normalized). Categorized as Country for map visuals.
 	column Country
 		dataType: string
-		dataCategory: Country
 		lineageTag: 1c761f7b-e1ca-44fc-84e2-253b4501a1b5
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: Country
 
@@ -134,9 +134,9 @@ table 'Dim Customer'
 	/// Numeric sort key behind Age Band. Hidden: pure sort helper, not a reporting attribute.
 	column 'Age Band Order'
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 8e7c0278-1d8f-43b1-afab-8f3810e75a99
-		isHidden
 		summarizeBy: none
 		sourceColumn: Age Band Order
 
