@@ -38,6 +38,7 @@ ref table 'Refresh Info'
 ref table _Measures
 ref table 'Time Intelligence'
 ref table 'Top N'
+ref table 'Metric Selector'
 
 ref cultureInfo en-US
 
