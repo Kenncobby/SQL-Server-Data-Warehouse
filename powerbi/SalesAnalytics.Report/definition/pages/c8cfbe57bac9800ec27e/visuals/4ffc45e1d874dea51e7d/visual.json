@@ -1,7 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "4ffc45e1d874dea51e7d",
-  "position": { "x": 196, "y": 16, "z": 1000, "height": 40, "width": 500, "tabOrder": 0 },
+  "position": {
+    "x": 196,
+    "y": 16,
+    "z": 1000,
+    "height": 40,
+    "width": 500,
+    "tabOrder": 0
+  },
   "visual": {
     "visualType": "textbox",
     "objects": {
@@ -28,16 +35,66 @@
       ]
     },
     "visualContainerObjects": {
-      "background": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }],
-      "border": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }],
-      "padding": [{
-        "properties": {
-          "top": { "expr": { "Literal": { "Value": "0D" } } },
-          "bottom": { "expr": { "Literal": { "Value": "0D" } } },
-          "left": { "expr": { "Literal": { "Value": "0D" } } },
-          "right": { "expr": { "Literal": { "Value": "0D" } } }
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
         }
-      }]
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -4,13 +4,11 @@
   "name": "c1d8ac335b63181ce88b",
   "options": {
     "targetVisualNames": [],
-    "suppressData": false,
-    "suppressDisplay": true,
     "suppressActiveSection": true,
-    "applyOnlyToTargetVisuals": false
+    "suppressDisplay": true
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.0",
     "activeSection": "c8cfbe57bac9800ec27e",
     "sections": {
       "c8cfbe57bac9800ec27e": {

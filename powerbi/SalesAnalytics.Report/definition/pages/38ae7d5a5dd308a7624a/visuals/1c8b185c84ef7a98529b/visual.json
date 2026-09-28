@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "1c8b185c84ef7a98529b",
-  "position": { "x": 196, "y": 104, "z": 1000, "height": 298, "width": 600, "tabOrder": 1010 },
+  "position": {
+    "x": 196,
+    "y": 104,
+    "z": 1000,
+    "height": 290,
+    "width": 524,
+    "tabOrder": 1010
+  },
   "visual": {
     "visualType": "pivotTable",
     "query": {
@@ -9,36 +16,93 @@
         "Rows": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Product" } }, "Property": "Category" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Product"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
               "queryRef": "Dim Product.Category",
-              "nativeQueryRef": "Category"
+              "nativeQueryRef": "Category",
+              "active": true
             },
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Product" } }, "Property": "Subcategory" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Product"
+                    }
+                  },
+                  "Property": "Subcategory"
+                }
+              },
               "queryRef": "Dim Product.Subcategory",
-              "nativeQueryRef": "Subcategory"
+              "nativeQueryRef": "Subcategory",
+              "active": false
             },
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Product" } }, "Property": "Product Name" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Product"
+                    }
+                  },
+                  "Property": "Product Name"
+                }
+              },
               "queryRef": "Dim Product.Product Name",
-              "nativeQueryRef": "Product Name"
+              "nativeQueryRef": "Product Name",
+              "active": false
             }
           ]
         },
         "Values": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
               "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales"
             },
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Gross Profit" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gross Profit"
+                }
+              },
               "queryRef": "_Measures.Gross Profit",
               "nativeQueryRef": "Gross Profit"
             },
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Gross Margin %" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gross Margin %"
+                }
+              },
               "queryRef": "_Measures.Gross Margin %",
               "nativeQueryRef": "Gross Margin %"
             }
@@ -47,18 +111,48 @@
       }
     },
     "objects": {
-      "columnHeaders": [{
-        "properties": {
-          "columnAdjustment": { "expr": { "Literal": { "Value": "'growToFit'" } } },
-          "autoSizeColumnWidth": { "expr": { "Literal": { "Value": "true" } } }
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
-      }]
+      ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Product Hierarchy Detail'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Product Hierarchy Detail'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

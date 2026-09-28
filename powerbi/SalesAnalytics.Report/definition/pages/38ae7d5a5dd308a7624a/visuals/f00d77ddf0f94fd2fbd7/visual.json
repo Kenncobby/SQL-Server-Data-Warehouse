@@ -1,7 +1,14 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f00d77ddf0f94fd2fbd7",
-  "position": { "x": 196, "y": 414, "z": 1000, "height": 280, "width": 1068, "tabOrder": 1013 },
+  "position": {
+    "x": 740,
+    "y": 410,
+    "z": 1000,
+    "height": 280,
+    "width": 524,
+    "tabOrder": 1013
+  },
   "visual": {
     "visualType": "scatterChart",
     "query": {
@@ -9,25 +16,54 @@
         "Category": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Product" } }, "Property": "Subcategory" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Product"
+                    }
+                  },
+                  "Property": "Subcategory"
+                }
+              },
               "queryRef": "Dim Product.Subcategory",
-              "nativeQueryRef": "Subcategory"
+              "nativeQueryRef": "Subcategory",
+              "active": true
             }
           ]
         },
         "X": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Quantity" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Quantity"
+                }
+              },
               "queryRef": "_Measures.Total Quantity",
-              "nativeQueryRef": "Total Quantity"
+              "nativeQueryRef": "Total Quantity",
+              "active": true
             }
           ]
         },
         "Y": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Gross Margin %" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gross Margin %"
+                }
+              },
               "queryRef": "_Measures.Gross Margin %",
               "nativeQueryRef": "Gross Margin %"
             }
@@ -37,14 +73,44 @@
     },
     "objects": {
       "dataPoint": [
-        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } } } }
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A9D8F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Quantity vs Margin by Subcategory'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Quantity vs Margin by Subcategory'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

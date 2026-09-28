@@ -1,7 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "f4bdd80fb338070914b6",
-  "position": { "x": 912, "y": 220, "z": 1000, "height": 280, "width": 352, "tabOrder": 1005 },
+  "position": {
+    "x": 912,
+    "y": 220,
+    "z": 1000,
+    "height": 280,
+    "width": 352,
+    "tabOrder": 1005
+  },
   "visual": {
     "visualType": "azureMap",
     "query": {
@@ -9,7 +16,16 @@
         "Category": {
           "projections": [
             {
-              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Country" } },
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Customer"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
               "queryRef": "Dim Customer.Country",
               "nativeQueryRef": "Country",
               "active": true
@@ -19,7 +35,16 @@
         "Size": {
           "projections": [
             {
-              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Total Sales" } },
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
               "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales",
               "active": true
@@ -30,18 +55,58 @@
     },
     "objects": {
       "bubbleLayer": [
-        { "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "sizeByValue": { "expr": { "Literal": { "Value": "true" } } },
-          "fillColor": { "solid": { "color": { "expr": { "Literal": { "Value": "'#2A9D8F'" } } } } }
-        } }
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "sizeByValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A9D8F'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
-      "title": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Total Sales by Country'" } } }
-      } }]
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Sales by Country'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

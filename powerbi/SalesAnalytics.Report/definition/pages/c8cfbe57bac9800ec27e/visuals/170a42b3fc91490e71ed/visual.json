@@ -1,35 +1,114 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "170a42b3fc91490e71ed",
-  "position": { "x": 1056, "y": 16, "z": 1000, "height": 80, "width": 176, "tabOrder": 1008 },
+  "position": {
+    "x": 1056,
+    "y": 16,
+    "z": 1000,
+    "height": 80,
+    "width": 176,
+    "tabOrder": 1008
+  },
   "visual": {
     "visualType": "slicer",
-    "syncGroup": { "groupName": "CountrySync", "fieldChanges": true, "filterChanges": true },
     "query": {
       "queryState": {
         "Values": {
-          "projections": [{
-            "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Dim Customer" } }, "Property": "Country" } },
-            "queryRef": "Dim Customer.Country",
-            "nativeQueryRef": "Country"
-          }]
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Customer"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
+              "queryRef": "Dim Customer.Country",
+              "nativeQueryRef": "Country",
+              "active": true
+            }
+          ]
         }
       }
     },
     "objects": {
-      "data": [{ "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } }],
-      "header": [{ "properties": {
-        "show": { "expr": { "Literal": { "Value": "true" } } },
-        "text": { "expr": { "Literal": { "Value": "'Country'" } } }
-      }}]
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Country'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
-      "padding": [{ "properties": {
-        "top":    { "expr": { "Literal": { "Value": "8D" } } },
-        "bottom": { "expr": { "Literal": { "Value": "8D" } } },
-        "left":   { "expr": { "Literal": { "Value": "8D" } } },
-        "right":  { "expr": { "Literal": { "Value": "8D" } } }
-      }}]
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "syncGroup": {
+      "groupName": "CountrySync",
+      "fieldChanges": true,
+      "filterChanges": true
     }
   }
 }
