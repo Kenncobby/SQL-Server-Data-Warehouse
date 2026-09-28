@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "35821d30328936bc768e",
+  "position": { "x": 994, "y": 104, "z": 1000, "height": 100, "width": 250, "tabOrder": 1003 },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Order Count" } },
+              "queryRef": "_Measures.Order Count",
+              "nativeQueryRef": "Order Count"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "_Measures" } }, "Property": "Sales YoY %" } },
+              "queryRef": "_Measures.Sales YoY %",
+              "nativeQueryRef": "Sales YoY %"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "24D" } } } }, "selector": { "id": "default" } }],
+      "label": [{ "properties": { "fontSize": { "expr": { "Literal": { "Value": "10D" } } } }, "selector": { "id": "default" } }],
+      "padding": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "8D" } } } }, "selector": { "id": "default" } }],
+      "layout": [{ "properties": { "paddingUniform": { "expr": { "Literal": { "Value": "0D" } } } }, "selector": { "id": "default" } }]
+    },
+    "visualContainerObjects": {
+      "title": [{ "properties": {
+        "show": { "expr": { "Literal": { "Value": "true" } } },
+        "text": { "expr": { "Literal": { "Value": "'Order Count'" } } }
+      } }],
+      "padding": [{ "properties": {
+        "top": { "expr": { "Literal": { "Value": "8D" } } },
+        "bottom": { "expr": { "Literal": { "Value": "8D" } } },
+        "left": { "expr": { "Literal": { "Value": "8D" } } },
+        "right": { "expr": { "Literal": { "Value": "8D" } } }
+      } }]
+    }
+  }
+}
