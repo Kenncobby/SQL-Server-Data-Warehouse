@@ -168,11 +168,11 @@ Share of sales lines shipped on or before their due date. Reads 100% everywhere 
 **Product Rank** — `#,##0`
 ```DAX
 IF (
-    ISINSCOPE ( 'Dim Product'[Product Name] ),
-    RANKX ( ALLSELECTED ( 'Dim Product'[Product Name] ), [Total Sales], , DESC, DENSE )
+    HASONEVALUE ( 'Dim Product'[Product Name] ),
+    RANKX ( ALL ( 'Dim Product'[Product Name] ), [Total Sales], , DESC, DENSE )
 )
 ```
-Dense rank of the current product by Total Sales among all selected products, blank unless a single product is in scope.
+Dense rank of the current product by Total Sales among all selected products, blank unless a single product is in scope. Uses `HASONEVALUE` rather than `ISINSCOPE` so it also resolves on single-value Card visuals (not just matrix/chart grouping axes) — needed for the Rank card on the Product Detail drill-through page. Uses `ALL` rather than `ALLSELECTED` because a drill-through filter sits outside the visual's own query boundary, so `ALLSELECTED` would rank the drilled-through product against a table containing only itself (always rank 1); `ALL` explicitly clears the Product Name filter regardless of its source, while other active filters (Year, Country) still apply.
 
 **Top N Sales** — `#,##0` currency
 ```DAX
