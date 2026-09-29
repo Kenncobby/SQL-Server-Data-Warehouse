@@ -206,6 +206,11 @@ table _Measures
 		displayFolder: UX
 		lineageTag: cb127517-de25-4924-9203-52f62d7b3c43
 
+	/// Name of the single product in the current filter context, blank if zero or multiple products are selected. Used to label the Product Detail drill-through page.
+	measure 'Selected Product' = SELECTEDVALUE ( 'Dim Product'[Product Name] )
+		displayFolder: UX
+		lineageTag: f6473f62-367b-49a8-8201-97ed878d2d14
+
 	/// Unused placeholder column, hidden from the Fields pane.
 	column Column1
 		dataType: int64
