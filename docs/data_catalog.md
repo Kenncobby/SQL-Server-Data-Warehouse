@@ -37,7 +37,7 @@ The Gold Layer is the business-level data representation, structured to support 
 | category_id         | NVARCHAR(50)  | A unique identifier for the product's category, linking to its high-level classification.     |
 | category            | NVARCHAR(50)  | The broader classification of the product (e.g., Bikes, Components) to group related items.  |
 | subcategory         | NVARCHAR(50)  | A more detailed classification of the product within the category, such as product type.      |
-| maintenance_required| NVARCHAR(50)  | Indicates whether the product requires maintenance (e.g., 'Yes', 'No').                       |
+| maintenance         | NVARCHAR(50)  | Indicates whether the product requires maintenance (e.g., 'Yes', 'No').                       |
 | cost                | INT           | The cost or base price of the product, measured in monetary units.                            |
 | product_line        | NVARCHAR(50)  | The specific product line or series to which the product belongs (e.g., Road, Mountain).      |
 | start_date          | DATE          | The date when the product became available for sale or use, stored in|
@@ -59,3 +59,40 @@ The Gold Layer is the business-level data representation, structured to support 
 | sales_amount    | INT           | The total monetary value of the sale for the line item, in whole currency units (e.g., 25).   |
 | quantity        | INT           | The number of units of the product ordered for the line item (e.g., 1).                       |
 | price           | INT           | The price per unit of the product for the line item, in whole currency units (e.g., 25).      |
+
+---
+
+## Power BI Semantic Model
+
+A star-schema Power BI semantic model (`powerbi/SalesAnalytics.SemanticModel/`) sits on top of the
+Gold Layer views above. Full measure catalog: [`powerbi_measures.md`](powerbi_measures.md).
+
+### Tables
+
+| Table | Type | Source |
+|---|---|---|
+| Dim Customer | Dimension | `gold.dim_customers` |
+| Dim Product | Dimension | `gold.dim_products` |
+| Fact Sales | Fact | `gold.fact_sales` |
+| Dim Date | Dimension (marked date table) | Generated in Power Query, `FiscalYearStartMonth` parameter drives the fiscal hierarchy |
+| Refresh Info | Helper | Single-row table capturing last refresh timestamp |
+| _Measures | Measure table | Empty table holding every DAX measure, organized into display folders |
+| Time Intelligence | Calculation group | Current / PY / YoY / YoY % / YTD / FYTD |
+| Top N | Calculated table | `GENERATESERIES(5, 25, 5)`, drives the Top N slicer on Product Performance |
+| Metric Selector | Field parameter | Sales / Gross Profit / Quantity / Orders, drives the Operations page combo chart |
+
+### Relationships
+
+| From | To | Active |
+|---|---|---|
+| Fact Sales[Customer Key] | Dim Customer[Customer Key] | Yes |
+| Fact Sales[Product Key] | Dim Product[Product Key] | Yes |
+| Fact Sales[Order Date] | Dim Date[Date] | Yes |
+| Fact Sales[Shipping Date] | Dim Date[Date] | No (`USERELATIONSHIP`) |
+| Fact Sales[Due Date] | Dim Date[Date] | No (`USERELATIONSHIP`) |
+
+### Row-level security
+
+Three static roles filter `Dim Customer[Country]`: `North America` (United States, Canada), `Europe`
+(Germany, United Kingdom, France), `Pacific` (Australia). See `docs/powerbi_qa_checklist.md` for the
+tested results.
