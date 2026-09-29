@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "85af896be4be59585060",
+  "name": "a6500576058b21abb061",
   "position": {
-    "x": 546.5945945945947,
+    "x": 861.4897824653923,
     "y": 64.126565589980231,
-    "z": 2000,
+    "z": 8001,
     "height": 102.09624258404747,
-    "width": 143.44100197758735,
-    "tabOrder": 5000
+    "width": 403.32234673698093,
+    "tabOrder": 8001
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Product Rank"
+                  "Property": "Selected Product"
                 }
               },
-              "queryRef": "_Measures.Product Rank",
-              "nativeQueryRef": "Product Rank"
+              "queryRef": "_Measures.Selected Product",
+              "nativeQueryRef": "Selected Product"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "22D"
+                  "Value": "20D"
                 }
               }
             }
@@ -53,42 +53,10 @@
       "label": [
         {
           "properties": {
-            "fontSize": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "padding": [
-        {
-          "properties": {
-            "paddingUniform": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "paddingUniform": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             }
@@ -103,41 +71,24 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Selected Product'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Rank'"
-                }
-              }
             }
           }
         }
       ]
-    }
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b77467c2b7cb52e85aea",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Product Rank"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -180,17 +180,38 @@
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "'Bikes'"
+                    "Value": "'Clothing'"
                   }
                 }
               ],
-              "isToggled": true
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Vests'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Shorts'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
             },
             {
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "'Accessories'"
+                    "Value": "'Bikes'"
                   }
                 }
               ],
@@ -200,7 +221,17 @@
                   "identityValues": [
                     {
                       "Literal": {
-                        "Value": "'Hydration Packs'"
+                        "Value": "'Mountain Bikes'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Road Bikes'"
                       }
                     }
                   ],

@@ -8,7 +8,19 @@
     "width": 324
   },
   "objects": {
-    "bubbleLayer": [],
+    "bubbleLayer": [
+      {
+        "properties": {
+          "markerRangeType": {
+            "expr": {
+              "Literal": {
+                "Value": "'scatterDeprecated'"
+              }
+            }
+          }
+        }
+      }
+    ],
     "mapControls": [
       {
         "properties": {
@@ -16,6 +28,13 @@
             "expr": {
               "Literal": {
                 "Value": "-0.54D"
+              }
+            }
+          },
+          "autoZoomIncludesReferenceLayer": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
               }
             }
           }
