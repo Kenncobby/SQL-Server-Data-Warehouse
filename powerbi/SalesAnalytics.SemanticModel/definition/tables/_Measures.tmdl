@@ -1,0 +1,237 @@
+/// Empty placeholder table holding every DAX measure in the model, organized into display folders.
+table _Measures
+	lineageTag: c826084c-cf59-4741-93fd-a8f3817dfbe0
+
+	/// Sum of line-level sales amount in whole currency units.
+	measure 'Total Sales' = SUM ( 'Fact Sales'[Sales Amount] )
+		formatString: \$#,##0
+		displayFolder: Base
+		lineageTag: b6907ba1-a789-443e-91c5-2f25df58c338
+
+	/// Total units sold across all order lines.
+	measure 'Total Quantity' = SUM ( 'Fact Sales'[Quantity] )
+		formatString: #,##0
+		displayFolder: Base
+		lineageTag: 4721b4e3-3594-4fea-bbe1-7c61c8799059
+
+	/// Line-level quantity times unit cost, summed. Orphan lines with no matching product contribute zero cost.
+	measure 'Total Cost' = SUMX ( 'Fact Sales', 'Fact Sales'[Quantity] * RELATED ( 'Dim Product'[Cost] ) )
+		formatString: \$#,##0
+		displayFolder: Base
+		lineageTag: debab4d9-d9da-4694-befa-74fa82029cb6
+
+	/// Total Sales minus Total Cost.
+	measure 'Gross Profit' = [Total Sales] - [Total Cost]
+		formatString: \$#,##0
+		displayFolder: Base
+		lineageTag: ac9d92aa-ecfa-426c-9034-b9d0b97bcc22
+
+	/// Gross Profit as a percentage of Total Sales.
+	measure 'Gross Margin %' = DIVIDE ( [Gross Profit], [Total Sales] )
+		formatString: 0.0%
+		displayFolder: Base
+		lineageTag: a66e10a8-1972-432b-a609-02c8c36c4b87
+
+	/// Count of distinct sales orders (an order can span multiple lines).
+	measure 'Order Count' = DISTINCTCOUNT ( 'Fact Sales'[Order Number] )
+		formatString: #,##0
+		displayFolder: Base
+		lineageTag: dcc66c9c-cf60-4ac4-a0b4-7cd1273291c2
+
+	/// Count of sales order lines (rows in Fact Sales).
+	measure 'Sales Lines' = COUNTROWS ( 'Fact Sales' )
+		formatString: #,##0
+		displayFolder: Base
+		lineageTag: d8a9c149-8126-450a-9a80-58aa71a3e712
+
+	/// Total Sales divided by the number of distinct orders.
+	measure 'Avg Order Value' = DIVIDE ( [Total Sales], [Order Count] )
+		formatString: \$#,##0.00
+		displayFolder: Base
+		lineageTag: 731ddd19-d878-4127-9883-4fa20a68bdb6
+
+	/// Total Sales divided by Total Quantity.
+	measure 'Avg Selling Price' = DIVIDE ( [Total Sales], [Total Quantity] )
+		formatString: \$#,##0.00
+		displayFolder: Base
+		lineageTag: b6b7a552-59ca-4c6c-b02c-fb90997bb95d
+
+	/// Count of distinct customers with at least one sales line in the current filter context.
+	measure 'Active Customers' = DISTINCTCOUNT ( 'Fact Sales'[Customer Key] )
+		formatString: #,##0
+		displayFolder: Customers
+		lineageTag: f84b1c31-9a34-48a6-94ce-6fada9d8213f
+
+	/// Count of customers whose first-ever order date falls within the current date filter.
+	measure 'New Customers' =
+			VAR _minDate = MIN ( 'Dim Date'[Date] )
+			VAR _maxDate = MAX ( 'Dim Date'[Date] )
+			VAR _custFirst =
+			    ADDCOLUMNS (
+			        VALUES ( 'Fact Sales'[Customer Key] ),
+			        "@FirstOrder", CALCULATE ( MIN ( 'Fact Sales'[Order Date] ), REMOVEFILTERS ( 'Dim Date' ) )
+			    )
+			RETURN
+			    COUNTROWS ( FILTER ( _custFirst, [@FirstOrder] >= _minDate && [@FirstOrder] <= _maxDate ) )
+		formatString: #,##0
+		displayFolder: Customers
+		lineageTag: 5a8c3f9f-4686-4319-89ad-165fd1f0a09f
+
+	/// Active Customers minus New Customers.
+	measure 'Returning Customers' = [Active Customers] - [New Customers]
+		formatString: #,##0
+		displayFolder: Customers
+		lineageTag: 9001d432-8887-4aab-8498-1f26ece47ddb
+
+	/// Total Sales divided by Active Customers.
+	measure 'Sales per Customer' = DIVIDE ( [Total Sales], [Active Customers] )
+		formatString: \$#,##0.00
+		displayFolder: Customers
+		lineageTag: a0e16f20-856a-48f0-9952-52c0476975e2
+
+	/// Total Sales for the same period one calendar year earlier.
+	measure 'Sales PY' = CALCULATE ( [Total Sales], SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) )
+		formatString: \$#,##0
+		displayFolder: Time (calendar)
+		lineageTag: 25c69f39-2c94-4993-9a8f-11401e464ea1
+
+	/// Total Sales minus Sales PY, blank when there is no prior-year data to compare.
+	measure 'Sales YoY' = IF ( NOT ISBLANK ( [Sales PY] ), [Total Sales] - [Sales PY] )
+		formatString: \$#,##0
+		displayFolder: Time (calendar)
+		lineageTag: 0f10a9b6-4c0c-4447-898a-2f4a9b9a9d7d
+
+	/// Sales YoY as a percentage of Sales PY.
+	measure 'Sales YoY %' = DIVIDE ( [Total Sales] - [Sales PY], [Sales PY] )
+		formatString: 0.0%
+		displayFolder: Time (calendar)
+		lineageTag: cc0e0d5a-7537-4776-a831-f01d03771d96
+
+	/// Total Sales accumulated from the start of the calendar year to the latest date in context.
+	measure 'Sales YTD' = TOTALYTD ( [Total Sales], 'Dim Date'[Date] )
+		formatString: \$#,##0
+		displayFolder: Time (calendar)
+		lineageTag: 60fe58bd-26eb-4277-8530-6f76a46f9866
+
+	/// Total Sales over the trailing 3 months ending on the latest date in context.
+	measure 'Sales Rolling 3M' = CALCULATE ( [Total Sales], DATESINPERIOD ( 'Dim Date'[Date], MAX ( 'Dim Date'[Date] ), -3, MONTH ) )
+		formatString: \$#,##0
+		displayFolder: Time (calendar)
+		lineageTag: 5bebf1f1-a7c6-4f4e-a5e1-d9b5418f33f5
+
+	/// Total Sales filtered by Shipping Date instead of Order Date, using the inactive relationship.
+	measure 'Sales by Ship Date' = CALCULATE ( [Total Sales], USERELATIONSHIP ( 'Dim Date'[Date], 'Fact Sales'[Shipping Date] ) )
+		formatString: \$#,##0
+		displayFolder: Time (calendar)
+		lineageTag: 9237111d-3e1c-4129-9457-46235e565c65
+
+	/// Total Sales accumulated since the start of the fiscal year (July 1) to the latest date in context.
+	measure 'Sales FYTD' = TOTALYTD ( [Total Sales], 'Dim Date'[Date], "6/30" )
+		formatString: \$#,##0
+		displayFolder: Time (fiscal)
+		lineageTag: 84831c96-3cff-4ad3-bc30-fbe67d96ee64
+
+	/// Sales FYTD for the same fiscal-to-date period one year earlier.
+	measure 'Sales FYTD PY' = CALCULATE ( [Sales FYTD], SAMEPERIODLASTYEAR ( 'Dim Date'[Date] ) )
+		formatString: \$#,##0
+		displayFolder: Time (fiscal)
+		lineageTag: 16cf9515-e64c-43d7-b01d-60ac239dfdc7
+
+	/// Average number of days between Order Date and Shipping Date.
+	measure 'Avg Days to Ship' = AVERAGE ( 'Fact Sales'[Days to Ship] )
+		formatString: #,##0.0
+		displayFolder: Operations
+		lineageTag: df894d52-8c76-4017-839c-b0abce73ca8e
+
+	/// Share of sales lines shipped on or before their due date. Reads 100% in this dataset; the Operations page centers on days-to-ship and ship-date volume instead.
+	measure 'On-Time Ship %' =
+			DIVIDE (
+			    COUNTROWS ( FILTER ( 'Fact Sales', 'Fact Sales'[Shipping Date] <= 'Fact Sales'[Due Date] ) ),
+			    [Sales Lines]
+			)
+		formatString: 0.0%
+		displayFolder: Operations
+		lineageTag: 77d5a273-cb88-47bc-93cc-8c45079270f1
+
+	/// Dense rank of the current product by Total Sales among all selected products, blank unless a single product is in scope.
+	measure 'Product Rank' =
+			IF (
+			    HASONEVALUE ( 'Dim Product'[Product Name] ),
+			    RANKX ( ALL ( 'Dim Product'[Product Name] ), [Total Sales], , DESC, DENSE )
+			)
+		formatString: #,##0
+		displayFolder: Ranking
+		lineageTag: 9a906498-1a7f-46bf-b3d4-5b00bf6b3168
+
+	/// Total Sales for products ranked within the Top N slider value, blank otherwise.
+	measure 'Top N Sales' =
+			VAR _n = [Top N Value]
+			RETURN IF ( [Product Rank] <= _n, [Total Sales] )
+		formatString: \$#,##0
+		displayFolder: Ranking
+		lineageTag: 532841a5-bc94-439d-b670-f5a47ee038df
+
+	/// Running share of Total Sales contributed by this product and every product with equal or higher sales, for a Pareto (80/20) chart.
+	measure 'Pareto Cumulative %' =
+			VAR _cur = [Total Sales]
+			VAR _all = CALCULATE ( [Total Sales], ALLSELECTED ( 'Dim Product'[Product Name] ) )
+			VAR _tbl = ADDCOLUMNS ( ALLSELECTED ( 'Dim Product'[Product Name] ), "@s", [Total Sales] )
+			RETURN
+			    IF ( NOT ISBLANK ( _cur ), DIVIDE ( SUMX ( FILTER ( _tbl, [@s] >= _cur ), [@s] ), _all ) )
+		formatString: 0.0%
+		displayFolder: Ranking
+		lineageTag: 29807023-3ef4-4ecc-a1d5-2a3ca145ae6d
+
+	/// Current value of the Top N what-if parameter (5-25, step 5, default 10).
+	measure 'Top N Value' = SELECTEDVALUE ( 'Top N'[Top N], 10 )
+		formatString: #,##0
+		displayFolder: Ranking
+		lineageTag: eaec6277-051d-4b09-a9b9-7a7ad0a392b7
+
+	/// Text footer showing when the semantic model was last refreshed.
+	measure 'Last Refresh' = "Data refreshed " & FORMAT ( MAX ( 'Refresh Info'[Last Refresh] ), "yyyy-mm-dd hh:nn" )
+		displayFolder: UX
+		lineageTag: dd913216-21b8-4139-a290-3fde5772b683
+
+	/// Hex colour for conditional formatting - green when YoY % is non-negative, red otherwise.
+	measure 'KPI Colour' = IF ( [Sales YoY %] >= 0, "#2E7D32", "#C62828" )
+		displayFolder: UX
+		lineageTag: d67d02ac-67a5-43ee-8d98-05b3c81af96a
+
+	/// Dynamic title for the Executive Overview sales trend chart, reflecting the current Country and Year filters.
+	measure 'Title Sales Trend' =
+			VAR _country = IF ( ISFILTERED ( 'Dim Customer'[Country] ), SELECTEDVALUE ( 'Dim Customer'[Country], "Multiple countries" ), "All countries" )
+			VAR _year = IF ( ISFILTERED ( 'Dim Date'[Year] ), SELECTEDVALUE ( 'Dim Date'[Year], "Multiple years" ), "All years" )
+			RETURN "Sales by Month — " & _country & ", " & _year
+		displayFolder: UX
+		lineageTag: cb127517-de25-4924-9203-52f62d7b3c43
+
+	/// Name of the single product in the current filter context, blank if zero or multiple products are selected. Used to label the Product Detail drill-through page.
+	measure 'Selected Product' = SELECTEDVALUE ( 'Dim Product'[Product Name] )
+		displayFolder: UX
+		lineageTag: f6473f62-367b-49a8-8201-97ed878d2d14
+
+	/// Unused placeholder column, hidden from the Fields pane.
+	column Column1
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b4f37fbd-c52d-4260-aefd-ec0e63fef5cd
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [Column1 = Int64.Type], {})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

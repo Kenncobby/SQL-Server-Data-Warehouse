@@ -1,0 +1,24 @@
+expression ServerName = "localhost" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5558a572-29f3-4a54-8035-18f8ff7508b6
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression DatabaseName = "SalesAnalytisDataWarehoues" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: e8c0b99b-aadf-487a-884d-0c5122be042e
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression FiscalYearStartMonth = 7 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: e9894a3b-2853-4335-b00c-ddeb730cff6b
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Number
+

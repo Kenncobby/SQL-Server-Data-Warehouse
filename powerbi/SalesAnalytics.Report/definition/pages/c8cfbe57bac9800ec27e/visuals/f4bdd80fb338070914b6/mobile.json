@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.7.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 992,
+    "z": 6,
+    "height": 300,
+    "width": 324
+  },
+  "objects": {
+    "bubbleLayer": [
+      {
+        "properties": {
+          "markerRangeType": {
+            "expr": {
+              "Literal": {
+                "Value": "'scatterDeprecated'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "mapControls": [
+      {
+        "properties": {
+          "zoom": {
+            "expr": {
+              "Literal": {
+                "Value": "-0.54D"
+              }
+            }
+          },
+          "autoZoomIncludesReferenceLayer": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

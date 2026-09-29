@@ -1,0 +1,225 @@
+/// CRM customers enriched with ERP gender, birthdate and location; one row per customer.
+table 'Dim Customer'
+	lineageTag: 5e3ce70f-6e15-49e2-a9a2-c43fc6f6716e
+
+	/// Surrogate key joining to Fact Sales[Customer Key]. Hidden: use Customer Name / the Geography hierarchy instead.
+	column 'Customer Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7cf9d7ca-e5af-4100-bfa1-d3f9dda80d9f
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Source system customer ID from CRM cust_info (cst_id).
+	column 'Customer ID'
+		dataType: int64
+		formatString: #,##0
+		lineageTag: a2e4d823-ebbe-42c3-925b-a5078d33fbda
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business/natural key from CRM cust_info (cst_key).
+	column 'Customer Number'
+		dataType: string
+		lineageTag: 2523d8a7-788c-4195-bbbd-48541c23577d
+		summarizeBy: none
+		sourceColumn: Customer Number
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Customer first name.
+	column 'First Name'
+		dataType: string
+		lineageTag: 27f0ec6d-1612-4400-a547-7ee3b2643dc0
+		summarizeBy: none
+		sourceColumn: First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Customer last name.
+	column 'Last Name'
+		dataType: string
+		lineageTag: dddc708d-ad45-4652-b1c9-1b1bd2a2f5e0
+		summarizeBy: none
+		sourceColumn: Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Customer country, cleaned in Power Query (n/a -> Unknown, casing normalized). Categorized as Country for map visuals.
+	column Country
+		dataType: string
+		lineageTag: 1c761f7b-e1ca-44fc-84e2-253b4501a1b5
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Marital status from CRM cust_info (Single/Married).
+	column 'Marital Status'
+		dataType: string
+		lineageTag: 86ebd3f7-7dc7-43f5-8eee-394d3af4a6ef
+		summarizeBy: none
+		sourceColumn: Marital Status
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Gender, sourced from ERP where CRM's value is missing.
+	column Gender
+		dataType: string
+		lineageTag: 5e6b25a3-82cb-4e56-9a0a-f3e2f47ee237
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Date of birth, from ERP CUST_AZ12.
+	column Birthdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b60728f0-1be9-45fb-8bc0-dfa097ee3b25
+		summarizeBy: none
+		sourceColumn: Birthdate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Date the customer record was created in CRM.
+	column 'Create Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cd338f5b-74bd-4ad3-a441-11792f1af5c2
+		summarizeBy: none
+		sourceColumn: Create Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// First Name & Last Name, for display in visuals and the Geography hierarchy.
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 4ba23ad1-ab58-476b-a9e9-a28fc1668dcd
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Age in whole years as of 2014-01-28 (the latest Order Date in this dataset), not today's date, so ages stay consistent with the data period.
+	column Age
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 48100b4e-b1b1-4bf1-b7b5-7c19e8aea850
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Age bucketed into bands (<35, 35-44, 45-54, 55-64, 65+, Unknown). Sorted by Age Band Order.
+	column 'Age Band'
+		dataType: string
+		lineageTag: 58cfdac0-809f-4c8a-b2b6-542406437e43
+		summarizeBy: none
+		sourceColumn: Age Band
+		sortByColumn: 'Age Band Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Numeric sort key behind Age Band. Hidden: pure sort helper, not a reporting attribute.
+	column 'Age Band Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8e7c0278-1d8f-43b1-afab-8f3810e75a99
+		summarizeBy: none
+		sourceColumn: Age Band Order
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Geography drill path: Country -> Customer Name.
+	hierarchy Geography
+		lineageTag: ea95ddb6-f301-4551-add6-aaec8435a5b7
+
+		level Country
+			lineageTag: 1c8ac1f9-b4ec-43c3-8a70-e0512808ffb4
+			column: Country
+
+		level 'Customer Name'
+			lineageTag: 532cc3d5-1e99-4f1d-8c26-844d7e236af0
+			column: 'Customer Name'
+
+	partition 'Dim Customer' = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(ServerName, DatabaseName),
+				    gold_dim_customers = Source{[Schema="gold",Item="dim_customers"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(gold_dim_customers, {
+				        {"customer_key", "Customer Key"},
+				        {"customer_id", "Customer ID"},
+				        {"customer_number", "Customer Number"},
+				        {"first_name", "First Name"},
+				        {"last_name", "Last Name"},
+				        {"country", "Country"},
+				        {"marital_status", "Marital Status"},
+				        {"gender", "Gender"},
+				        {"birthdate", "Birthdate"},
+				        {"create_date", "Create Date"}
+				    }),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {
+				        {"Customer Key", Int64.Type},
+				        {"Customer ID", Int64.Type},
+				        {"Customer Number", type text},
+				        {"First Name", type text},
+				        {"Last Name", type text},
+				        {"Country", type text},
+				        {"Marital Status", type text},
+				        {"Gender", type text},
+				        {"Birthdate", type date},
+				        {"Create Date", type date}
+				    }),
+				    #"Cleaned Country" = Table.TransformColumns(#"Changed Type", {
+				        {"Country", each if _ = "n/a" then "Unknown" else Text.Proper(_), type text}
+				    }),
+				    #"Added Customer Name" = Table.AddColumn(#"Cleaned Country", "Customer Name", each [First Name] & " " & [Last Name], type text),
+				    #"Added Age" = Table.AddColumn(#"Added Customer Name", "Age", each
+				        if [Birthdate] = null then null
+				        else
+				            let
+				                refDate = #date(2014, 1, 28),
+				                years = Date.Year(refDate) - Date.Year([Birthdate]),
+				                hadBirthdayYet = (Date.Month(refDate) > Date.Month([Birthdate])) or
+				                    (Date.Month(refDate) = Date.Month([Birthdate]) and Date.Day(refDate) >= Date.Day([Birthdate]))
+				            in
+				                if hadBirthdayYet then years else years - 1,
+				        Int64.Type),
+				    #"Added Age Band" = Table.AddColumn(#"Added Age", "Age Band", each
+				        if [Age] = null then "Unknown"
+				        else if [Age] < 35 then "<35"
+				        else if [Age] <= 44 then "35–44"
+				        else if [Age] <= 54 then "45–54"
+				        else if [Age] <= 64 then "55–64"
+				        else "65+",
+				        type text),
+				    #"Added Age Band Order" = Table.AddColumn(#"Added Age Band", "Age Band Order", each
+				        if [Age Band] = "<35" then 1
+				        else if [Age Band] = "35–44" then 2
+				        else if [Age Band] = "45–54" then 3
+				        else if [Age Band] = "55–64" then 4
+				        else if [Age Band] = "65+" then 5
+				        else 6,
+				        Int64.Type)
+				in
+				    #"Added Age Band Order"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

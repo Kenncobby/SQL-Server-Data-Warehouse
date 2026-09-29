@@ -1,0 +1,29 @@
+/// Single-row helper table holding the data refresh timestamp, consumed by the Last Refresh measure. Hidden from the Fields pane.
+table 'Refresh Info'
+	isHidden
+	lineageTag: 7aa751cf-b975-4526-8dd4-0bb21e65c9f4
+
+	/// Timestamp captured at refresh time via DateTime.LocalNow().
+	column 'Last Refresh'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6f3014bb-8bcf-4ab3-947e-e5de1d0736fb
+		summarizeBy: none
+		sourceColumn: Last Refresh
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Refresh Info' = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = Table.FromRecords({[Last Refresh = DateTime.LocalNow()]}),
+				    #"Changed Type" = Table.TransformColumnTypes(Source, {{"Last Refresh", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

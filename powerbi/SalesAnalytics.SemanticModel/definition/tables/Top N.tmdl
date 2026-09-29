@@ -1,0 +1,18 @@
+/// What-if parameter: drives the Top N Value measure and the Top N Sales / Product Performance visuals.
+table 'Top N'
+	lineageTag: 25c04aaa-54c9-4078-a5e8-d3a645ba8f2d
+
+	/// Candidate values for the Top N slider: 5, 10, 15, 20, 25.
+	column 'Top N'
+		dataType: int64
+		formatString: 0
+		lineageTag: c6ee58a1-4d98-4ec5-8503-10cbd71042da
+		summarizeBy: sum
+		sourceColumn: [Top N]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Top N' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 5, 25, 5 ), "Top N", [Value] )
+
