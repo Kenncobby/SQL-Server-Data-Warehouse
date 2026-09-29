@@ -67,6 +67,11 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
     },
     "visualContainerObjects": {
@@ -110,5 +115,23 @@
       "fieldChanges": true,
       "filterChanges": true
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2553b492ca8bc7be3099",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Customer"
+              }
+            },
+            "Property": "Country"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

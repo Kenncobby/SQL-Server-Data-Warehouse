@@ -110,5 +110,23 @@
       "fieldChanges": true,
       "filterChanges": true
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4e10ee4206eb18a11bcc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Top N"
+              }
+            },
+            "Property": "Top N"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

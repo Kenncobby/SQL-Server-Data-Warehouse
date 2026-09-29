@@ -67,6 +67,11 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
     },
     "visualContainerObjects": {
@@ -110,23 +115,5 @@
       "fieldChanges": true,
       "filterChanges": true
     }
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6c6c4f40654789570792",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim Date"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

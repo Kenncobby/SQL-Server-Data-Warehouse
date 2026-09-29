@@ -23,7 +23,15 @@ Thumbs.db
 *.csv
 *.png
 *.pdf
+!docs/images/*.png
+!powerbi/SalesAnalytics.pdf
 
 # Power BI Project local files
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+
+# Local scratch folder
+z-Trying/
+
+# Local Word renderings of markdown docs
+*.docx

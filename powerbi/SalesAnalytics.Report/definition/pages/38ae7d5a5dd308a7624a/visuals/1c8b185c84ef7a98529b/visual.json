@@ -43,7 +43,7 @@
               },
               "queryRef": "Dim Product.Subcategory",
               "nativeQueryRef": "Subcategory",
-              "active": false
+              "active": true
             },
             {
               "field": {
@@ -58,7 +58,7 @@
               },
               "queryRef": "Dim Product.Product Name",
               "nativeQueryRef": "Product Name",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -158,10 +158,58 @@
             "queryRefs": [
               "Dim Product.Product Name"
             ],
-            "isCollapsed": true
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Product"
+                    }
+                  },
+                  "Property": "Product Name"
+                }
+              }
+            ],
+            "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Bikes'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Accessories'"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Hydration Packs'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            }
+          ]
+        }
       }
     ],
     "objects": {
